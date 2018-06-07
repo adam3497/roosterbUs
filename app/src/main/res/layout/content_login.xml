@@ -4,10 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LoginActivity"
     tools:showIn="@layout/activity_login">
 
-    
+    <!--android:background="@drawable/gradient"-->
+    <!--android:textColorHint="@color/colorText"-->
+    <!--android:textColor="@color/colorText"-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_logo_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_logo_height"
+                android:background="@drawable/gradient"
+                android:contentDescription="@string/login_logo_description"
+                android:src="@drawable/logo"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etx_login_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/login_etx_username_hint"
+                android:inputType="textEmailAddress|textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo_login" />
+
+            <EditText
+                android:id="@+id/etx_login_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/login_etx_password_hint"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etx_login_username" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="72dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorButtonsBackground"
+                android:text="@string/login_button"
+                android:textColor="@color/colorButtonsText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etx_login_password" />
+
+            <TextView
+                android:id="@+id/txt_login_alternatives"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@string/login_txt_alternatives"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/btn_facebook_login"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_login_alternatives" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_google_login"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="47dp"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_facebook_login" />
+
+            <Button
+                android:id="@+id/btn_login_create_account"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="72dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/login_button_create_account"
+                android:textColor="@color/colorButtonRegister"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_google_login" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@string/login_copyrights"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login_create_account" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

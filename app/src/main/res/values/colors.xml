@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--Login colors-->
+    <color name="colorButtonsBackground">#070c33</color>
+    <color name="colorButtonsText">#fff</color>
+    <color name="colorButtonRegister">#86b1e9</color>
+    <color name="colorText">#fff</color>
+
 </resources>
