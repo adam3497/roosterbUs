@@ -1,8 +1,10 @@
-package org.roosterbus;
+package org.roosterbus.utils;
 
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+
+import org.roosterbus.MainActivity;
 
 public class OSMUpdateLocation implements LocationListener {
 
