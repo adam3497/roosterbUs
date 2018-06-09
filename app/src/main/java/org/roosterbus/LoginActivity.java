@@ -1,5 +1,8 @@
 package org.roosterbus;
 
+import android.app.ListActivity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         //to obtain the KeyHash of the app
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.altarosprojects.seriesanimes",
+                    "org.roosterbUs",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -131,6 +134,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent signInIntent = googleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Inicio de sesión", Toast.LENGTH_SHORT).show();
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainActivity);
             }
         });
 
@@ -255,5 +267,4 @@ public class LoginActivity extends AppCompatActivity {
             finish();*/
         }
     }
-
 }

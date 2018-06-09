@@ -1,14 +1,22 @@
 package org.roosterbus;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +26,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.osmdroid.util.GeoPoint;
@@ -40,8 +50,13 @@ public class MainActivity extends AppCompatActivity
     private MapController myMapController;
     private GeoPoint posicionActual;
 
+    private Button btnPrueba;
+    public static final int NOTIFICACION_ID = 122;
+    private NotificationManager notificationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,6 +71,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+
         if (tengoPermisoEscritura()) {
             cargarMapas();
         }
@@ -63,7 +80,9 @@ public class MainActivity extends AppCompatActivity
             Toast mensaje = Toast.makeText(getApplicationContext(), "Sin permiso", Toast.LENGTH_LONG);
             mensaje.show();
         }
+        setViews();
     }
+
 
     private void cargarMapas() {
         GeoPoint sede = new GeoPoint(10.01951,-84.19719);
@@ -133,6 +152,38 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void setViews(){
+        btnPrueba= (Button) findViewById(R.id.btnPrueba);
+        btnPrueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pruebaNotificacion();
+                Toast.makeText(getApplicationContext(),"Prueba",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void pruebaNotificacion(){
+        //Patrón de vibración
+        long vibrate[] = {0,100,100};
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                this)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("Prueba")
+                .setAutoCancel(true)
+                .setContentText("Está sirviendo")
+                .setVibrate(vibrate);
+
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+
+        notificationManager.notify(NOTIFICACION_ID, builder.build());
+
+    }
     public boolean tengoPermisoUbicacion() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
