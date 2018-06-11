@@ -20,4 +20,10 @@
     <string name="login_txt_alternatives">O ingresar con: </string>
     <string name="login_button_create_account">Crear cuenta</string>
     <string name="login_copyrights">roosterbUs \u00A9 2018 \n Todos los derechos reservados</string>
+    <string name="title_activity_account">Cuenta</string>
+
+    <string-array name="modalidades">
+        <item>Semestre</item>
+        <item>Cuatrimestres</item>
+    </string-array>
 </resources>
