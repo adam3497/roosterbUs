@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ScheduleActivity"
+    tools:showIn="@layout/activity_schedule">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+      <android.support.constraint.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+         <ImageButton
+             android:id="@+id/btn_edit_schedule"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="8dp"
+             android:layout_marginStart="8dp"
+             android:layout_marginTop="24dp"
+             android:contentDescription="Editar horario"
+             android:src="@android:drawable/ic_menu_edit"
+             app:layout_constraintEnd_toStartOf="@+id/btn_add_course"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+         <ImageButton
+             android:id="@+id/btn_add_course"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="24dp"
+             android:layout_marginEnd="8dp"
+             android:layout_marginStart="8dp"
+             android:layout_marginTop="24dp"
+             android:contentDescription="Añadir curso"
+             android:src="@android:drawable/ic_menu_add"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toStartOf="@+id/btn_delete_course"
+             app:layout_constraintStart_toEndOf="@+id/btn_edit_schedule"
+             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+         <ImageButton
+             android:id="@+id/btn_delete_course"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="8dp"
+             android:layout_marginStart="8dp"
+             android:layout_marginTop="24dp"
+             android:contentDescription="Eliminar curso"
+             android:src="@android:drawable/ic_menu_delete"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toEndOf="@+id/btn_add_course"
+             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+         <HorizontalScrollView
+             android:id="@+id/horizontalScrollView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+               <TextView
+                   android:id="@+id/txt_hora_title"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="Hora"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/txt_hora_title"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/txt_seven_oclock"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="07:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/txt_hora_title" />
+
+               <TextView
+                   android:id="@+id/textView5"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="08:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/txt_seven_oclock" />
+
+               <TextView
+                   android:id="@+id/textView6"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="09:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+               <TextView
+                   android:id="@+id/textView7"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="10:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+               <TextView
+                   android:id="@+id/textView8"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="11:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+               <TextView
+                   android:id="@+id/textView9"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="12:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+               <TextView
+                   android:id="@+id/textView10"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="13:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+               <TextView
+                   android:id="@+id/textView11"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="14:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+               <TextView
+                   android:id="@+id/textView12"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="15:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+               <TextView
+                   android:id="@+id/textView13"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="16:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+               <TextView
+                   android:id="@+id/textView2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="17:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+               <TextView
+                   android:id="@+id/textView14"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="18:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+               <TextView
+                   android:id="@+id/textView15"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="19:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+               <TextView
+                   android:id="@+id/textView16"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:text="20:00"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+               <View
+                   android:id="@+id/divider2"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/txt_hora_title" />
+
+               <View
+                   android:id="@+id/divider3"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/txt_seven_oclock" />
+
+               <View
+                   android:id="@+id/divider4"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+               <View
+                   android:id="@+id/divider5"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+               <View
+                   android:id="@+id/divider6"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+               <View
+                   android:id="@+id/divider7"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+               <View
+                   android:id="@+id/divider8"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+               <View
+                   android:id="@+id/divider9"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+               <View
+                   android:id="@+id/divider10"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+               <View
+                   android:id="@+id/divider11"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+               <View
+                   android:id="@+id/divider12"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+               <View
+                   android:id="@+id/divider13"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+               <View
+                   android:id="@+id/divider14"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+               <View
+                   android:id="@+id/divider15"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+               <View
+                   android:id="@+id/divider16"
+                   android:layout_width="0dp"
+                   android:layout_height="2dp"
+                   android:layout_marginEnd="8dp"
+                   android:layout_marginStart="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+               <TextView
+                   android:id="@+id/textView4"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Lunes"
+                   app:layout_constraintStart_toEndOf="@+id/divider"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView17"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Martes"
+                   app:layout_constraintStart_toEndOf="@+id/textView4"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView18"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Miércoles"
+                   app:layout_constraintStart_toEndOf="@+id/textView17"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView19"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Jueves"
+                   app:layout_constraintStart_toEndOf="@+id/textView18"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView20"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Viernes"
+                   app:layout_constraintStart_toEndOf="@+id/textView19"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView21"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Sábado"
+                   app:layout_constraintStart_toEndOf="@+id/textView20"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView22"
+                   android:layout_width="70dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginTop="8dp"
+                   android:gravity="center"
+                   android:text="Domingo"
+                   app:layout_constraintStart_toEndOf="@+id/textView21"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider17"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView4"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider18"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView17"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider19"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView18"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider20"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView19"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider21"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView20"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/divider22"
+                   android:layout_width="2dp"
+                   android:layout_height="0dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_marginTop="8dp"
+                   android:background="?android:attr/listDivider"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintStart_toEndOf="@+id/textView21"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+         </HorizontalScrollView>
+
+
+      </android.support.constraint.ConstraintLayout>
+
+   </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

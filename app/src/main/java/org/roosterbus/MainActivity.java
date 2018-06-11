@@ -255,7 +255,8 @@ public class MainActivity extends AppCompatActivity
             Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class);
             startActivity(accountIntent);
         } else if (id == R.id.nav_schedule) {
-
+            Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
+            startActivity(scheduleIntent);
         } else if (id == R.id.nav_logout) {
             logout();
         }

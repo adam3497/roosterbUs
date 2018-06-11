@@ -27,5 +27,5 @@
         <item>Cuatrimestres</item>
     </string-array>
     <string name="title_activity_register">Registrarse</string>
-
+    <string name="title_activity_schedule">ScheduleActivity</string>
 </resources>
