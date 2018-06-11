@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         setViews();
 
     }
+    
 
     @Override
     protected void onStart() {

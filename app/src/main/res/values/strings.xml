@@ -27,5 +27,6 @@
         <item>Cuatrimestres</item>
     </string-array>
     <string name="title_activity_register">Registrarse</string>
-    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_schedule">Horario</string>
+    <string name="title_activity_rate">RateActivity</string>
 </resources>

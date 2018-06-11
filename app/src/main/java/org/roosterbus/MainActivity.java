@@ -259,11 +259,14 @@ public class MainActivity extends AppCompatActivity
             startActivity(scheduleIntent);
         } else if (id == R.id.nav_logout) {
             logout();
+        } else if (id == R.id.nav_rate) {
+            Intent rateIntent = new Intent(MainActivity.this, RateActivity.class);
+            startActivity(rateIntent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
     }
 
     private void logout() {
