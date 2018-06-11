@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
     private MapView myOpenMapView;
     private MapController myMapController;
     private GeoPoint posicionActual;
-
+    private GeoPoint posicionBus;
     public static final int NOTIFICACION_ID = 122;
     private NotificationManager notificationManager;
 
@@ -98,8 +98,6 @@ public class MainActivity extends AppCompatActivity
             cargarMapas();
         }
         else {
-            Toast mensaje = Toast.makeText(getApplicationContext(), "Sin permiso", Toast.LENGTH_LONG);
-            mensaje.show();
         }
     }
 
@@ -139,8 +137,6 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
         } else {
-            Toast mensaje = Toast.makeText(getApplicationContext(), "Sin permiso de ubicación", Toast.LENGTH_LONG);
-            mensaje.show();
         }
     }
 
@@ -153,8 +149,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else {
-            Toast mensaje = Toast.makeText(getApplicationContext(), "Sin permiso", Toast.LENGTH_LONG);
-            mensaje.show();
         }
     }
 
@@ -189,14 +183,19 @@ public class MainActivity extends AppCompatActivity
         myMapController.setCenter(posicionActual);
         if (puntos.size() > 1)
             puntos.remove(1);
-        OverlayItem marcador = new OverlayItem("Estás aquí", "Posicion actual", posicionActual);
-        marcador.setMarker(ResourcesCompat.getDrawable(getResources(), R.drawable.center, null));
+
+        OverlayItem marcador = new OverlayItem("Estás aquí", "Posición actual", posicionActual);
+        marcador.setMarker(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_pos_24dp, null));
         puntos.add(marcador);
         refrescaPuntos();
     }
 
     private void refrescaPuntos() {
         myOpenMapView.getOverlays().clear();
+        posicionBus = new GeoPoint(10.0186011,-84.1971541);
+        OverlayItem marcadorBus = new OverlayItem("Bus", "Ubicación del bus", posicionBus);
+        marcadorBus.setMarker(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bus, null));
+        puntos.add(marcadorBus);
         ItemizedIconOverlay.OnItemGestureListener<OverlayItem> tap = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
             public boolean onItemLongPress(int arg0, OverlayItem arg1) {
