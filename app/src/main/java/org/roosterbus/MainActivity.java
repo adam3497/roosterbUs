@@ -1,6 +1,8 @@
 package org.roosterbus;
 
 import android.Manifest;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity
     private MapView myOpenMapView;
     private MapController myMapController;
     private GeoPoint posicionActual;
+
+    public static final int NOTIFICACION_ID = 122;
+    private NotificationManager notificationManager;
 
     private Boolean isSignInFace;
     private Boolean isSignInGoogle;
@@ -311,5 +317,30 @@ public class MainActivity extends AppCompatActivity
             progressDialog.dismiss();
             finish();
         }
+    }
+    /*
+    Código para la prueba de las notificaciones
+     */
+    public void pruebaNotificacion(){
+        //Patrón de vibración
+        long vibrate[] = {0,100,100};
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                this)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("Prueba")
+                .setAutoCancel(true)
+                .setContentText("Está sirviendo")
+                .setVibrate(vibrate);
+
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+
+        notificationManager.notify(NOTIFICACION_ID, builder.build());
+
     }
 }
