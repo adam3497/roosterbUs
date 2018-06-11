@@ -12,7 +12,7 @@
     <string name="action_settings">Settings</string>
 
     <!--Login Activity strings-->
-    <string name="title_activity_login">Iniciar sesión</string>
+    <string name="title_activity_login">roosterbUs</string>
     <string name="login_logo_description">Logo de roosterbUs</string>
     <string name="login_etx_username_hint">Nombre de usuario</string>
     <string name="login_etx_password_hint">Contraseña</string>
@@ -26,6 +26,6 @@
         <item>Semestre</item>
         <item>Cuatrimestres</item>
     </string-array>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_register">Registrarse</string>
 
 </resources>
