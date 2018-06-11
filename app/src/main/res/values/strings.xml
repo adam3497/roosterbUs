@@ -26,4 +26,6 @@
         <item>Semestre</item>
         <item>Cuatrimestres</item>
     </string-array>
+    <string name="title_activity_register">RegisterActivity</string>
+
 </resources>
