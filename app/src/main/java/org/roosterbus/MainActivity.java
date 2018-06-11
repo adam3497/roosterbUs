@@ -1,6 +1,7 @@
 package org.roosterbus;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,6 +9,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.design.widget.NavigationView;
@@ -19,6 +21,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
@@ -40,12 +53,31 @@ public class MainActivity extends AppCompatActivity
     private MapController myMapController;
     private GeoPoint posicionActual;
 
+    private Boolean isSignInFace;
+    private Boolean isSignInGoogle;
+    private GoogleSignInClient mGoogleSignInClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            isSignInFace = extras.getBoolean("accountSignedFacebook", false);
+            isSignInGoogle = extras.getBoolean("accountSignedGoogle", false);
+        }else{
+            Toast.makeText(this, "Se produjo un error en la carga de la aplicación", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -214,22 +246,70 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_account_settings) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_schedule) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_logout) {
+            logout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout() {
+        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+        final Intent loginRequestIntent = new Intent(MainActivity.this, LoginActivity.class);
+
+        if(isSignInFace){
+            progressDialog.setMessage("Cerrando sesión de Facebook");
+            progressDialog.show();
+
+            //obtain the current token, if true the user is logging
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+            if(isLoggedIn){
+                //the user is logging, so we need to logout this session
+                new GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions", null, HttpMethod.DELETE, new GraphRequest.Callback() {
+                    @Override
+                    public void onCompleted(GraphResponse response) {
+                        LoginManager.getInstance().logOut();
+                        progressDialog.dismiss();
+                        startActivity(loginRequestIntent);
+                        finish();
+                    }
+                }).executeAsync();
+            }
+            else{
+                //the user is currently logout
+                progressDialog.dismiss();
+                startActivity(loginRequestIntent);
+                finish();
+            }
+        }
+        else if(isSignInGoogle){
+            progressDialog.setMessage("Cerrando sesión de google");
+            progressDialog.show();
+            //make the request to logout from Google Account
+            mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    //when the request is complete, finish this activity and start the Login Activity
+                    progressDialog.dismiss();
+                    startActivity(loginRequestIntent);
+                    finish();
+                }
+            });
+        }
+        else{
+            progressDialog.setMessage("Cerrando sesión de la cuenta de aplicación");
+            progressDialog.show();
+            startActivity(loginRequestIntent);
+            progressDialog.dismiss();
+            finish();
+        }
     }
 }

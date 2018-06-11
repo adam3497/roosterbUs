@@ -62,24 +62,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //to obtain the KeyHash of the app
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.altarosprojects.seriesanimes",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.i("KeyHash", "Key not found");
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            Log.i("KeyHash", "Error in process to obtain the keyhash");
-        }
-
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -194,6 +176,17 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(btnFacebookLogin, "Se produjo un error al iniciar con Facebook", Snackbar.LENGTH_SHORT).show();
             }
         });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                mainIntent.putExtra("accountSignedGoogle", false);
+                mainIntent.putExtra("accountSignedFacebook", false);
+                startActivity(mainIntent);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -216,11 +209,11 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void loggedFacebook() {
         Toast.makeText(getApplicationContext(), "Inicio de sesión éxito con la cuenta de Facebook", Toast.LENGTH_SHORT).show();
-        /*Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
         mainIntent.putExtra("accountSignedFacebook", true);
         mainIntent.putExtra("accountSignedGoogle", false);
         startActivity(mainIntent);
-        finish();*/
+        finish();
     }
 
     /**
@@ -248,11 +241,11 @@ public class LoginActivity extends AppCompatActivity {
     private void googleSignInManager(GoogleSignInAccount account) {
         if(account != null){
             Toast.makeText(getApplicationContext(), "Inicio de sesión éxito con la cuenta de Google", Toast.LENGTH_SHORT).show();
-            /*Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
             mainIntent.putExtra("accountSignedGoogle", true);
             mainIntent.putExtra("accountSignedFacebook", false);
             startActivity(mainIntent);
-            finish();*/
+            finish();
         }
     }
 
