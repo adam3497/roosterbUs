@@ -253,7 +253,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_account_settings) {
-            // Handle the camera action
+            Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class);
+            startActivity(accountIntent);
         } else if (id == R.id.nav_schedule) {
 
         } else if (id == R.id.nav_logout) {
