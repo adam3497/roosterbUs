@@ -248,8 +248,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_atraso) {
+            notificacionAtraso();
+        }else if(id == R.id.action_precio){
+            notificacionPrecio();
+        } else if(id == R.id.action_salir){
+            notificacionBusCerca();
         }
 
         return super.onOptionsItemSelected(item);

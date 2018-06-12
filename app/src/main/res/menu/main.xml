@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_precio"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Notificación cambio de precio"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_atraso"
+        android:orderInCategory="100"
+        android:title="Notificación atraso"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_salir"
+        android:orderInCategory="100"
+        android:title="Notificación salir a tomar bus"
         app:showAsAction="never" />
 </menu>
