@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity
     private GeoPoint posicionBus;
     private GeoPoint posicionParada;
     public static final int NOTIFICACION_ID = 122;
+    public static final int NOTIFICACION_ID2 = 12;
+    public static final int NOTIFICACION_ID3 = 1;
     private NotificationManager notificationManager;
 
     private Boolean isSignInFace;
@@ -333,10 +335,8 @@ public class MainActivity extends AppCompatActivity
             finish();
         }
     }
-    /*
-    Código para la prueba de las notificaciones
-     */
-    public void pruebaNotificacion(){
+
+    public void notificacionAtraso(){
         //Patrón de vibración
         long vibrate[] = {0,100,100};
 
@@ -345,9 +345,9 @@ public class MainActivity extends AppCompatActivity
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 this)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle("Prueba")
+                .setContentTitle("¡Atraso en ruta!")
                 .setAutoCancel(true)
-                .setContentText("Está sirviendo")
+                .setContentText("Ha sucedido un atraso en la ruta Alajuela - Santa Bárbara")
                 .setVibrate(vibrate);
 
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
@@ -356,6 +356,47 @@ public class MainActivity extends AppCompatActivity
         builder.setContentIntent(pendingIntent);
 
         notificationManager.notify(NOTIFICACION_ID, builder.build());
+    }
+    public void notificacionPrecio(){
+        //Patrón de vibración
+        long vibrate[] = {0,100,100};
 
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                this)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("¡Cambio en el precio!")
+                .setAutoCancel(true)
+                .setContentText("El precio en la ruta Alajuela - Santa Bárbara ha cambiado")
+                .setVibrate(vibrate);
+
+        Intent intent = new Intent(MainActivity.this, RateActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+
+        notificationManager.notify(NOTIFICACION_ID2, builder.build());
+    }
+    public void notificacionBusCerca(){
+        //Patrón de vibración
+        long vibrate[] = {0,100,100};
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                this)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("¡El bus está cerca!")
+                .setAutoCancel(true)
+                .setContentText("¡Debes salir a tomar en bus!")
+                .setVibrate(vibrate);
+
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+
+        notificationManager.notify(NOTIFICACION_ID3, builder.build());
     }
 }
