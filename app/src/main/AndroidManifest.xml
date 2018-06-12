@@ -70,6 +70,10 @@
             android:name=".AddCoursesActivity"
             android:label="@string/title_activity_add_courses"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".BusRoutesActivity"
+            android:label="@string/title_activity_bus_routes"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

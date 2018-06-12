@@ -28,6 +28,7 @@
     </string-array>
     <string name="title_activity_register">Registrarse</string>
     <string name="title_activity_schedule">Horario</string>
-    <string name="title_activity_rate">RateActivity</string>
-    <string name="title_activity_add_courses">AddCoursesActivity</string>
+    <string name="title_activity_rate">Tarifas</string>
+    <string name="title_activity_add_courses">Agregar cursos al periodo</string>
+    <string name="title_activity_bus_routes">Rutas de bus del período</string>
 </resources>
