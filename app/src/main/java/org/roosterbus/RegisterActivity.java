@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addCoursesIntent = new Intent(RegisterActivity.this, BusRoutesActivity.class);
+                Intent addCoursesIntent = new Intent(RegisterActivity.this, AddCoursesActivity.class);
                 startActivity(addCoursesIntent);
                 finish();
             }
