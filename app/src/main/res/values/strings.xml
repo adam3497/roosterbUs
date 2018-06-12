@@ -29,4 +29,5 @@
     <string name="title_activity_register">Registrarse</string>
     <string name="title_activity_schedule">Horario</string>
     <string name="title_activity_rate">RateActivity</string>
+    <string name="title_activity_add_courses">AddCoursesActivity</string>
 </resources>

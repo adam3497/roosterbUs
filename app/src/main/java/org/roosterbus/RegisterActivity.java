@@ -20,15 +20,29 @@ public class RegisterActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btnCreateAccount = (Button) findViewById(R.id.btn_create_account);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
+                Intent addCoursesIntent = new Intent(RegisterActivity.this, AddCoursesActivity.class);
+                startActivity(addCoursesIntent);
                 finish();
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

@@ -30,7 +30,6 @@
                 android:id="@+id/iv_logo_login"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_logo_height"
-                android:background="@drawable/gradient"
                 android:contentDescription="@string/login_logo_description"
                 android:src="@drawable/logo"
                 android:paddingTop="8dp"
