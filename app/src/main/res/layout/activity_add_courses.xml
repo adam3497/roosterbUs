@@ -20,7 +20,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_add_courses" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_add_courses" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_add_course"
