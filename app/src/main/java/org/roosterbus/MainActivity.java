@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     private MapController myMapController;
     private GeoPoint posicionActual;
     private GeoPoint posicionBus;
+    private GeoPoint posicionParada;
     public static final int NOTIFICACION_ID = 122;
     private NotificationManager notificationManager;
 
@@ -192,10 +193,17 @@ public class MainActivity extends AppCompatActivity
 
     private void refrescaPuntos() {
         myOpenMapView.getOverlays().clear();
+
         posicionBus = new GeoPoint(10.0186011,-84.1971541);
         OverlayItem marcadorBus = new OverlayItem("Bus", "Ubicación del bus", posicionBus);
         marcadorBus.setMarker(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bus, null));
         puntos.add(marcadorBus);
+
+        posicionParada = new GeoPoint(10.0188136,-84.1943173);
+        OverlayItem marcadorParada = new OverlayItem("Bus", "Ubicación de la parada", posicionParada);
+        marcadorParada.setMarker(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_bus_stop, null));
+        puntos.add(marcadorParada);
+
         ItemizedIconOverlay.OnItemGestureListener<OverlayItem> tap = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
             public boolean onItemLongPress(int arg0, OverlayItem arg1) {
@@ -262,7 +270,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_rate) {
             Intent rateIntent = new Intent(MainActivity.this, RateActivity.class);
             startActivity(rateIntent);
-        }
+        } else if (id == R.id.nav_routes) {
+            Intent routesIntent = new Intent(MainActivity.this, BusRoutesActivity.class);
+            startActivity(routesIntent);
+    }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
